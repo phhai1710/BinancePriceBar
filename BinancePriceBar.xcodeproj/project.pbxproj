@@ -11,6 +11,8 @@
 		1888192725F93CFE001AE381 /* ScrollTouchBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1888192625F93CFE001AE381 /* ScrollTouchBarItem.swift */; };
 		1888192C25F93DA0001AE381 /* PairsPriceTouchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1888192B25F93DA0001AE381 /* PairsPriceTouchBar.swift */; };
 		1888192E25F93E2D001AE381 /* PairsPriceTouchBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1888192D25F93E2D001AE381 /* PairsPriceTouchBarItem.swift */; };
+		1888194825FA0AC3001AE381 /* DFRFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1888194725FA0AC3001AE381 /* DFRFoundation.framework */; };
+		1888194925FA0AC3001AE381 /* DFRFoundation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1888194725FA0AC3001AE381 /* DFRFoundation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		18A87BC925F68DC10005C236 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A87BC825F68DC10005C236 /* AppDelegate.swift */; };
 		18A87BCB25F68DC20005C236 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18A87BCA25F68DC20005C236 /* Assets.xcassets */; };
 		18A87BCE25F68DC20005C236 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A87BCC25F68DC20005C236 /* MainMenu.xib */; };
@@ -25,19 +27,17 @@
 		18A87BF925F68E1B0005C236 /* defaultPreset.json in Resources */ = {isa = PBXBuildFile; fileRef = 18A87BF225F68E1B0005C236 /* defaultPreset.json */; };
 		18A87BFC25F68E1C0005C236 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A87BF525F68E1B0005C236 /* UIColor+Extensions.swift */; };
 		18A87BFD25F68E1C0005C236 /* CoinPriceTouchBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A87BF725F68E1B0005C236 /* CoinPriceTouchBarController.swift */; };
-		18A87C0525F68F990005C236 /* DFRFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A87C0425F68F990005C236 /* DFRFoundation.framework */; };
-		18A87C0625F68F990005C236 /* DFRFoundation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 18A87C0425F68F990005C236 /* DFRFoundation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9E948525523F10D88BDE508A /* Pods_BinancePriceBar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92709B215F005F95C456B3FE /* Pods_BinancePriceBar.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		18A87C0725F68F990005C236 /* Embed Frameworks */ = {
+		1888194A25FA0AC3001AE381 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				18A87C0625F68F990005C236 /* DFRFoundation.framework in Embed Frameworks */,
+				1888194925FA0AC3001AE381 /* DFRFoundation.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -49,6 +49,7 @@
 		1888192625F93CFE001AE381 /* ScrollTouchBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollTouchBarItem.swift; sourceTree = "<group>"; };
 		1888192B25F93DA0001AE381 /* PairsPriceTouchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PairsPriceTouchBar.swift; sourceTree = "<group>"; };
 		1888192D25F93E2D001AE381 /* PairsPriceTouchBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PairsPriceTouchBarItem.swift; sourceTree = "<group>"; };
+		1888194725FA0AC3001AE381 /* DFRFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DFRFoundation.framework; path = ../../../../../System/Library/PrivateFrameworks/DFRFoundation.framework; sourceTree = "<group>"; };
 		18A87BC525F68DC10005C236 /* BinancePriceBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BinancePriceBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18A87BC825F68DC10005C236 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18A87BCA25F68DC20005C236 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -86,7 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18A87C0525F68F990005C236 /* DFRFoundation.framework in Frameworks */,
+				1888194825FA0AC3001AE381 /* DFRFoundation.framework in Frameworks */,
 				9E948525523F10D88BDE508A /* Pods_BinancePriceBar.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -201,6 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				18A87C0425F68F990005C236 /* DFRFoundation.framework */,
+				1888194725FA0AC3001AE381 /* DFRFoundation.framework */,
 				92709B215F005F95C456B3FE /* Pods_BinancePriceBar.framework */,
 			);
 			name = Frameworks;
@@ -218,7 +220,7 @@
 				18A87BC225F68DC10005C236 /* Frameworks */,
 				18A87BC325F68DC10005C236 /* Resources */,
 				2E26EF4AED4B28C33E50816D /* [CP] Embed Pods Frameworks */,
-				18A87C0725F68F990005C236 /* Embed Frameworks */,
+				1888194A25FA0AC3001AE381 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
