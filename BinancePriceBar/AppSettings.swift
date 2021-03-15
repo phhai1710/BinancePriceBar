@@ -8,8 +8,23 @@
 import Foundation
 
 struct AppSettings {
-    @UserDefault(key: "com.phhai.settings.showControlStrip", defaultValue: false)
+    @UserDefault(key: "showControlStrip", defaultValue: false)
     static var showControlStripState: Bool
+    
+    @UserDefault(key: "showEsc", defaultValue: false)
+    static var showEsc: Bool
+    
+    public static var chartInterval: PresetModel.ChartInterval {
+        set {
+            UserDefaults.standard.set(newValue.rawValue, forKey: "chartInterval")
+        }
+        get {
+            if let string = UserDefaults.standard.string(forKey: "chartInterval") {
+                return PresetModel.ChartInterval(rawValue: string) ?? .h1
+            }
+            return .h1
+        }
+    }
 }
 
 @propertyWrapper

@@ -7,12 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		185C6C6025FA7EC40040CCD0 /* PairsPriceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185C6C5F25FA7EC40040CCD0 /* PairsPriceController.swift */; };
+		185C6C6225FA84430040CCD0 /* PairDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185C6C6125FA84430040CCD0 /* PairDetailController.swift */; };
+		185C6C6425FA88B20040CCD0 /* TouchBarItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185C6C6325FA88B20040CCD0 /* TouchBarItemController.swift */; };
 		1888191325F8DC97001AE381 /* NibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1888191225F8DC97001AE381 /* NibLoadable.swift */; };
 		1888192725F93CFE001AE381 /* ScrollTouchBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1888192625F93CFE001AE381 /* ScrollTouchBarItem.swift */; };
-		1888192C25F93DA0001AE381 /* PairsPriceTouchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1888192B25F93DA0001AE381 /* PairsPriceTouchBar.swift */; };
 		1888192E25F93E2D001AE381 /* PairsPriceTouchBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1888192D25F93E2D001AE381 /* PairsPriceTouchBarItem.swift */; };
 		1888194825FA0AC3001AE381 /* DFRFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1888194725FA0AC3001AE381 /* DFRFoundation.framework */; };
 		1888194925FA0AC3001AE381 /* DFRFoundation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1888194725FA0AC3001AE381 /* DFRFoundation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		18A7180A25FC975F003F596A /* CoinPriceTouchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A7180925FC975F003F596A /* CoinPriceTouchBar.swift */; };
+		18A7180E25FCE25A003F596A /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A7180D25FCE25A003F596A /* Double+Extensions.swift */; };
+		18A7181225FD3300003F596A /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A7181125FD3300003F596A /* String+Extensions.swift */; };
+		18A7181E25FDE064003F596A /* ChartTouchBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A7181D25FDE064003F596A /* ChartTouchBarItem.swift */; };
+		18A7182025FE187F003F596A /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A7181F25FE187F003F596A /* Array+Extensions.swift */; };
 		18A87BC925F68DC10005C236 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A87BC825F68DC10005C236 /* AppDelegate.swift */; };
 		18A87BCB25F68DC20005C236 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18A87BCA25F68DC20005C236 /* Assets.xcassets */; };
 		18A87BCE25F68DC20005C236 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A87BCC25F68DC20005C236 /* MainMenu.xib */; };
@@ -45,11 +52,18 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		185C6C5F25FA7EC40040CCD0 /* PairsPriceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairsPriceController.swift; sourceTree = "<group>"; };
+		185C6C6125FA84430040CCD0 /* PairDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairDetailController.swift; sourceTree = "<group>"; };
+		185C6C6325FA88B20040CCD0 /* TouchBarItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchBarItemController.swift; sourceTree = "<group>"; };
 		1888191225F8DC97001AE381 /* NibLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibLoadable.swift; sourceTree = "<group>"; };
 		1888192625F93CFE001AE381 /* ScrollTouchBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollTouchBarItem.swift; sourceTree = "<group>"; };
-		1888192B25F93DA0001AE381 /* PairsPriceTouchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PairsPriceTouchBar.swift; sourceTree = "<group>"; };
 		1888192D25F93E2D001AE381 /* PairsPriceTouchBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PairsPriceTouchBarItem.swift; sourceTree = "<group>"; };
 		1888194725FA0AC3001AE381 /* DFRFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DFRFoundation.framework; path = ../../../../../System/Library/PrivateFrameworks/DFRFoundation.framework; sourceTree = "<group>"; };
+		18A7180925FC975F003F596A /* CoinPriceTouchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinPriceTouchBar.swift; sourceTree = "<group>"; };
+		18A7180D25FCE25A003F596A /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
+		18A7181125FD3300003F596A /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		18A7181D25FDE064003F596A /* ChartTouchBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartTouchBarItem.swift; sourceTree = "<group>"; };
+		18A7181F25FE187F003F596A /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		18A87BC525F68DC10005C236 /* BinancePriceBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BinancePriceBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18A87BC825F68DC10005C236 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18A87BCA25F68DC20005C236 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -107,9 +121,9 @@
 		1888191925F933BE001AE381 /* TouchBar */ = {
 			isa = PBXGroup;
 			children = (
-				1888192625F93CFE001AE381 /* ScrollTouchBarItem.swift */,
-				1888192D25F93E2D001AE381 /* PairsPriceTouchBarItem.swift */,
-				1888192B25F93DA0001AE381 /* PairsPriceTouchBar.swift */,
+				18A7180925FC975F003F596A /* CoinPriceTouchBar.swift */,
+				18A7181025FD1D94003F596A /* TouchBarItems */,
+				18A7180F25FD1D85003F596A /* Controllers */,
 			);
 			path = TouchBar;
 			sourceTree = "<group>";
@@ -119,6 +133,9 @@
 			children = (
 				18A87BF525F68E1B0005C236 /* UIColor+Extensions.swift */,
 				1888191225F8DC97001AE381 /* NibLoadable.swift */,
+				18A7180D25FCE25A003F596A /* Double+Extensions.swift */,
+				18A7181125FD3300003F596A /* String+Extensions.swift */,
+				18A7181F25FE187F003F596A /* Array+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -130,6 +147,26 @@
 				18A87BF125F68E1B0005C236 /* TouchBar.h */,
 			);
 			path = Header;
+			sourceTree = "<group>";
+		};
+		18A7180F25FD1D85003F596A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				185C6C6325FA88B20040CCD0 /* TouchBarItemController.swift */,
+				185C6C5F25FA7EC40040CCD0 /* PairsPriceController.swift */,
+				185C6C6125FA84430040CCD0 /* PairDetailController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		18A7181025FD1D94003F596A /* TouchBarItems */ = {
+			isa = PBXGroup;
+			children = (
+				1888192625F93CFE001AE381 /* ScrollTouchBarItem.swift */,
+				1888192D25F93E2D001AE381 /* PairsPriceTouchBarItem.swift */,
+				18A7181D25FDE064003F596A /* ChartTouchBarItem.swift */,
+			);
+			path = TouchBarItems;
 			sourceTree = "<group>";
 		};
 		18A87BBC25F68DC10005C236 = {
@@ -323,19 +360,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18A7181225FD3300003F596A /* String+Extensions.swift in Sources */,
 				18A87BDD25F68E090005C236 /* PresetModel.swift in Sources */,
 				18A87BED25F68E0D0005C236 /* AMR_ANSIEscapeHelper.m in Sources */,
+				18A7182025FE187F003F596A /* Array+Extensions.swift in Sources */,
 				1888191325F8DC97001AE381 /* NibLoadable.swift in Sources */,
 				18A87BEB25F68E0D0005C236 /* LaunchAtLoginController.m in Sources */,
+				18A7180E25FCE25A003F596A /* Double+Extensions.swift in Sources */,
 				18A87BFD25F68E1C0005C236 /* CoinPriceTouchBarController.swift in Sources */,
+				185C6C6225FA84430040CCD0 /* PairDetailController.swift in Sources */,
+				18A7180A25FC975F003F596A /* CoinPriceTouchBar.swift in Sources */,
 				18A87BDB25F68E090005C236 /* CoinPairModel.swift in Sources */,
 				1888192725F93CFE001AE381 /* ScrollTouchBarItem.swift in Sources */,
+				185C6C6425FA88B20040CCD0 /* TouchBarItemController.swift in Sources */,
 				18A87BEC25F68E0D0005C236 /* TouchBarSupport.m in Sources */,
+				185C6C6025FA7EC40040CCD0 /* PairsPriceController.swift in Sources */,
 				18A87BFC25F68E1C0005C236 /* UIColor+Extensions.swift in Sources */,
 				18A87BF825F68E1B0005C236 /* AppSettings.swift in Sources */,
+				18A7181E25FDE064003F596A /* ChartTouchBarItem.swift in Sources */,
 				18A87BC925F68DC10005C236 /* AppDelegate.swift in Sources */,
 				18A87BEE25F68E0D0005C236 /* DeprecatedCarbonAPI.c in Sources */,
-				1888192C25F93DA0001AE381 /* PairsPriceTouchBar.swift in Sources */,
 				1888192E25F93E2D001AE381 /* PairsPriceTouchBarItem.swift in Sources */,
 				18A87BDC25F68E090005C236 /* BinanceCoinModel.swift in Sources */,
 			);

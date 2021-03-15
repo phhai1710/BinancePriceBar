@@ -10,9 +10,12 @@ import ObjectMapper
 class CoinPairModel: Mappable, Hashable {
     
     var pair: String = ""
+    var name: String = ""
     var icon: String = ""
     var iconData: String = ""
     var colorHex: String = ""
+    var aboveAlertPrice: Double?
+    var belowAlertPrice: Double?
 
     required init?(map: Map) {
         
@@ -24,10 +27,13 @@ class CoinPairModel: Mappable, Hashable {
     }
     
     func mapping(map: Map) {
-        pair            <- map["pair"]
-        icon            <- map["icon"]
-        iconData        <- map["iconData"]
-        colorHex        <- map["colorHex"]
+        pair                    <- map["pair"]
+        name                    <- map["name"]
+        icon                    <- map["icon"]
+        iconData                <- map["iconData"]
+        colorHex                <- map["colorHex"]
+        aboveAlertPrice         <- map["aboveAlertPrice"]
+        belowAlertPrice         <- map["belowAlertPrice"]
     }
     
     static func == (lhs: CoinPairModel, rhs: CoinPairModel) -> Bool {

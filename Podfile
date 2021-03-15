@@ -10,4 +10,6 @@ target 'BinancePriceBar' do
   pod 'ObjectMapper'
   pod 'SnapKit'
   pod 'Kingfisher'
+  pod 'Charts'
+  pod 'Alamofire'
 end

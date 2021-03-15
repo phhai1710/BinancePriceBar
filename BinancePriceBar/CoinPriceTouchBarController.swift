@@ -13,7 +13,10 @@ class CoinPriceTouchBarController: NSViewController {
     
     private var socket: WebSocket?
     private var coinPairs: [CoinPairModel]
-    private lazy var pairPriceTouchBar = PairsPriceTouchBar(coinPairs: self.coinPairs)
+    private lazy var coinPriceTouchBar: CoinPriceTouchBar = {
+        let coinPriceTouchBar = CoinPriceTouchBar()
+        return coinPriceTouchBar
+    }()
     
     // MARK: - Constructors
     init(coinPairs: [CoinPairModel]) {
@@ -31,7 +34,7 @@ class CoinPriceTouchBarController: NSViewController {
     }
     
     override func makeTouchBar() -> NSTouchBar? {
-        return pairPriceTouchBar
+        return coinPriceTouchBar
     }
     
     override func viewDidLoad() {
@@ -40,11 +43,15 @@ class CoinPriceTouchBarController: NSViewController {
         self.initWebSocket()
     }
     
-    func reloadJson(coinPairs: [CoinPairModel]) {
+    func reloadCoinPairs(coinPairs: [CoinPairModel]) {
         self.coinPairs = coinPairs
         
-        self.pairPriceTouchBar.updateItemList(coinPairs: coinPairs)
+        self.coinPriceTouchBar.updateCoinPairs(coinPairs: coinPairs)
         self.initWebSocket()
+    }
+    
+    func reloadTouchBar() {
+        coinPriceTouchBar.reloadTouchBar()
     }
     
     private func initWebSocket() {
@@ -73,9 +80,9 @@ extension CoinPriceTouchBarController: WebSocketDelegate {
         case .disconnected(let string, _):
             print("disconnected \(string)")
         case .text(let string):
-            let model = Mapper<BinanceCoinModel>().map(JSONString: string)
-            if let pair = model?.pair, let price = model?.price, let priceD = Double(price) {
-                pairPriceTouchBar.setPrice(pair: pair, price: priceD.description)
+            
+            if let model = Mapper<BinanceCoinModel>().map(JSONString: string) {
+                coinPriceTouchBar.updatePairPrice(binanceCoinModel: model)
             }
             print("text \(string)")
         case .pong(_):
