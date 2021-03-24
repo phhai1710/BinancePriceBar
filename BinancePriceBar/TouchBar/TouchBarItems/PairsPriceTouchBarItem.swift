@@ -9,8 +9,6 @@ import Cocoa
 import Kingfisher
 
 class PairsPriceTouchBarItem: NSTouchBarItem {
-    private static let buttonNormalColor = NSColor(red: 54, green: 54, blue: 54)
-    private static let buttonAlertColor = NSColor(hex: "8D0101")
     
     let coinPair: CoinPairModel
     
@@ -21,20 +19,18 @@ class PairsPriceTouchBarItem: NSTouchBarItem {
         let pairButton = NSButton()
         pairButton.title = coinPair.name.isNotEmpty() ? coinPair.name : coinPair.pair
         pairButton.bezelStyle = .rounded
-        pairButton.font = NSFont.systemFont(ofSize: 14, weight: .semibold)
-        pairButton.bezelColor = PairsPriceTouchBarItem.buttonNormalColor
+        pairButton.font = NSFont.systemFont(ofSize: CGFloat(coinPair.fontSize), weight: .semibold)
+        pairButton.bezelColor = Constants.buttonNormalColor
         pairButton.imagePosition = .imageLeft
         pairButton.imageScaling = .scaleProportionallyUpOrDown
         let size = CGSize(width: 80, height: 80)
         let resizeOption = KingfisherOptionsInfoItem.processor(DownsamplingImageProcessor(size: size))
-        if !self.coinPair.iconData.isEmpty,
-           let decodedData = Data(base64Encoded: self.coinPair.iconData, options: []) {
-            let decodedimage = NSImage(data: decodedData)
-            let provider = Base64ImageDataProvider(base64String: self.coinPair.iconData,
-                                                   cacheKey: self.coinPair.iconData)
+        if let iconBase64String = self.coinPair.iconBase64String, !iconBase64String.isEmpty {
+            let provider = Base64ImageDataProvider(base64String: iconBase64String,
+                                                   cacheKey: iconBase64String)
             pairButton.kf.setImage(with: .provider(provider),
                                    options: [resizeOption])
-        } else if !self.coinPair.icon.isEmpty, let iconUrl = URL(string: self.coinPair.icon) {
+        } else if !self.coinPair.iconUrl.isEmpty, let iconUrl = URL(string: self.coinPair.iconUrl) {
             pairButton.kf.setImage(with: iconUrl,
                                    options: [resizeOption])
         }
@@ -94,7 +90,7 @@ class PairsPriceTouchBarItem: NSTouchBarItem {
         }
         
         pairButton.bezelColor = (isAboveAlertPrice || isBelowAlertPrice)
-            ? PairsPriceTouchBarItem.buttonAlertColor : PairsPriceTouchBarItem.buttonNormalColor
+            ? Constants.buttonAlertColor : Constants.buttonNormalColor
     }
     
     // MARK: - Private methods

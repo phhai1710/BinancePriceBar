@@ -14,9 +14,10 @@ class CoinPriceTouchBarController: NSViewController {
     private var socket: WebSocket?
     private var coinPairs: [CoinPairModel]
     private lazy var coinPriceTouchBar: CoinPriceTouchBar = {
-        let coinPriceTouchBar = CoinPriceTouchBar()
+        let coinPriceTouchBar = CoinPriceTouchBar(coinPairs: coinPairs)
         return coinPriceTouchBar
     }()
+    private var shouldReconnect = false
     
     // MARK: - Constructors
     init(coinPairs: [CoinPairModel]) {
@@ -41,6 +42,16 @@ class CoinPriceTouchBarController: NSViewController {
         super.viewDidLoad()
         
         self.initWebSocket()
+        
+        NSWorkspace.shared.notificationCenter.addObserver(self,
+                                                          selector: #selector(onWakeNote(note:)),
+                                                          name: NSWorkspace.didWakeNotification,
+                                                          object: nil)
+        
+        NSWorkspace.shared.notificationCenter.addObserver(self,
+                                                          selector: #selector(onSleepNote(note:)),
+                                                          name: NSWorkspace.willSleepNotification,
+                                                          object: nil)
     }
     
     func reloadCoinPairs(coinPairs: [CoinPairModel]) {
@@ -80,19 +91,46 @@ extension CoinPriceTouchBarController: WebSocketDelegate {
         case .disconnected(let string, _):
             print("disconnected \(string)")
         case .text(let string):
-            
             if let model = Mapper<BinanceCoinModel>().map(JSONString: string) {
                 coinPriceTouchBar.updatePairPrice(binanceCoinModel: model)
             }
-            print("text \(string)")
+//            print("text \(string)")
         case .pong(_):
             print("pong")
         case .ping(_):
             print("ping")
         case .error(let error):
             print("error \(error?.localizedDescription ?? "")")
+        case .viabilityChanged(let viablity):
+            print("viabilityChanged \(viablity)")
+            if !viablity {
+                // Disconnect current session and reconnect again
+                self.shouldReconnect = true
+                client.disconnect()
+            }
+        case .reconnectSuggested(let status):
+            print("reconnectSuggested \(status)")
+        case .cancelled:
+            print("cancelled")
+            if self.shouldReconnect {
+                self.shouldReconnect = false
+                client.connect()
+            }
         default:
             print(event)
         }
+    }
+}
+
+// MARK: - Notification selectors
+extension CoinPriceTouchBarController {
+    @objc func onWakeNote(note: NSNotification) {
+        print("wake up")
+        self.socket?.connect()
+    }
+
+    @objc func onSleepNote(note: NSNotification) {
+        print("sleep")
+        self.socket?.disconnect()
     }
 }

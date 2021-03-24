@@ -25,6 +25,23 @@ struct AppSettings {
             return .h1
         }
     }
+    
+    public static var coinPairs: [CoinPairModel] {
+        get
+        {
+            guard let data = UserDefaults.standard.data(forKey: "coinPairs") else {
+                return []
+            }
+            return (try? JSONDecoder().decode([CoinPairModel].self, from: data)) ?? []
+        }
+        set
+        {
+            guard let data = try? JSONEncoder().encode(newValue) else {
+                return
+            }
+            UserDefaults.standard.set(data, forKey: "coinPairs")
+        }
+    }
 }
 
 @propertyWrapper

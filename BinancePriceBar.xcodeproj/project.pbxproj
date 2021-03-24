@@ -20,6 +20,10 @@
 		18A7181225FD3300003F596A /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A7181125FD3300003F596A /* String+Extensions.swift */; };
 		18A7181E25FDE064003F596A /* ChartTouchBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A7181D25FDE064003F596A /* ChartTouchBarItem.swift */; };
 		18A7182025FE187F003F596A /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A7181F25FE187F003F596A /* Array+Extensions.swift */; };
+		18A7184325FFCAC8003F596A /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A7184125FFCAC7003F596A /* PreferencesWindowController.swift */; };
+		18A7184825FFCC63003F596A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18A7184725FFCC63003F596A /* Main.storyboard */; };
+		18A7184A25FFCD6B003F596A /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A7184925FFCD6B003F596A /* TabViewController.swift */; };
+		18A7184C25FFD34B003F596A /* CoinPairsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A7184B25FFD34B003F596A /* CoinPairsViewController.swift */; };
 		18A87BC925F68DC10005C236 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A87BC825F68DC10005C236 /* AppDelegate.swift */; };
 		18A87BCB25F68DC20005C236 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18A87BCA25F68DC20005C236 /* Assets.xcassets */; };
 		18A87BCE25F68DC20005C236 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A87BCC25F68DC20005C236 /* MainMenu.xib */; };
@@ -31,9 +35,13 @@
 		18A87BED25F68E0D0005C236 /* AMR_ANSIEscapeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A87BE425F68E0D0005C236 /* AMR_ANSIEscapeHelper.m */; };
 		18A87BEE25F68E0D0005C236 /* DeprecatedCarbonAPI.c in Sources */ = {isa = PBXBuildFile; fileRef = 18A87BE525F68E0D0005C236 /* DeprecatedCarbonAPI.c */; };
 		18A87BF825F68E1B0005C236 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A87BF025F68E1B0005C236 /* AppSettings.swift */; };
-		18A87BF925F68E1B0005C236 /* defaultPreset.json in Resources */ = {isa = PBXBuildFile; fileRef = 18A87BF225F68E1B0005C236 /* defaultPreset.json */; };
 		18A87BFC25F68E1C0005C236 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A87BF525F68E1B0005C236 /* UIColor+Extensions.swift */; };
 		18A87BFD25F68E1C0005C236 /* CoinPriceTouchBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A87BF725F68E1B0005C236 /* CoinPriceTouchBarController.swift */; };
+		18D04A2E2606668C00EA237B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D04A2D2606668C00EA237B /* Constants.swift */; };
+		18D04A3126066AEC00EA237B /* CoinPairCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D04A3026066AEC00EA237B /* CoinPairCellView.swift */; };
+		18D04A3426066B1600EA237B /* AddCoinPairCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D04A3326066B1600EA237B /* AddCoinPairCellView.swift */; };
+		18D04A362607C24700EA237B /* NSImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D04A352607C24700EA237B /* NSImage+Extensions.swift */; };
+		18EEC7DB260BBBCB007C49F6 /* TextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EEC7DA260BBBCB007C49F6 /* TextFieldDelegate.swift */; };
 		9E948525523F10D88BDE508A /* Pods_BinancePriceBar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92709B215F005F95C456B3FE /* Pods_BinancePriceBar.framework */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +72,10 @@
 		18A7181125FD3300003F596A /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		18A7181D25FDE064003F596A /* ChartTouchBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartTouchBarItem.swift; sourceTree = "<group>"; };
 		18A7181F25FE187F003F596A /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
+		18A7184125FFCAC7003F596A /* PreferencesWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
+		18A7184725FFCC63003F596A /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		18A7184925FFCD6B003F596A /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
+		18A7184B25FFD34B003F596A /* CoinPairsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinPairsViewController.swift; sourceTree = "<group>"; };
 		18A87BC525F68DC10005C236 /* BinancePriceBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BinancePriceBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18A87BC825F68DC10005C236 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18A87BCA25F68DC20005C236 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -86,11 +98,15 @@
 		18A87BEA25F68E0D0005C236 /* TouchBarPrivateApi-Bridging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TouchBarPrivateApi-Bridging.h"; sourceTree = "<group>"; };
 		18A87BF025F68E1B0005C236 /* AppSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		18A87BF125F68E1B0005C236 /* TouchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchBar.h; sourceTree = "<group>"; };
-		18A87BF225F68E1B0005C236 /* defaultPreset.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = defaultPreset.json; sourceTree = "<group>"; };
 		18A87BF525F68E1B0005C236 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		18A87BF625F68E1B0005C236 /* BridgingHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		18A87BF725F68E1B0005C236 /* CoinPriceTouchBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoinPriceTouchBarController.swift; sourceTree = "<group>"; };
 		18A87C0425F68F990005C236 /* DFRFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DFRFoundation.framework; path = ../../../../System/Library/PrivateFrameworks/DFRFoundation.framework; sourceTree = "<group>"; };
+		18D04A2D2606668C00EA237B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		18D04A3026066AEC00EA237B /* CoinPairCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinPairCellView.swift; sourceTree = "<group>"; };
+		18D04A3326066B1600EA237B /* AddCoinPairCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCoinPairCellView.swift; sourceTree = "<group>"; };
+		18D04A352607C24700EA237B /* NSImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+Extensions.swift"; sourceTree = "<group>"; };
+		18EEC7DA260BBBCB007C49F6 /* TextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldDelegate.swift; sourceTree = "<group>"; };
 		92709B215F005F95C456B3FE /* Pods_BinancePriceBar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BinancePriceBar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B09B7FFF5E137CEAA20D497B /* Pods-BinancePriceBar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BinancePriceBar.release.xcconfig"; path = "Target Support Files/Pods-BinancePriceBar/Pods-BinancePriceBar.release.xcconfig"; sourceTree = "<group>"; };
 		FF6EEF7BDBFCADC3773CBC8A /* Pods-BinancePriceBar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BinancePriceBar.debug.xcconfig"; path = "Target Support Files/Pods-BinancePriceBar/Pods-BinancePriceBar.debug.xcconfig"; sourceTree = "<group>"; };
@@ -136,6 +152,7 @@
 				18A7180D25FCE25A003F596A /* Double+Extensions.swift */,
 				18A7181125FD3300003F596A /* String+Extensions.swift */,
 				18A7181F25FE187F003F596A /* Array+Extensions.swift */,
+				18D04A352607C24700EA237B /* NSImage+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -169,6 +186,26 @@
 			path = TouchBarItems;
 			sourceTree = "<group>";
 		};
+		18A7183B25FFCA0C003F596A /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				18A7184025FFCA74003F596A /* PreferencesViewController */,
+				18A87BF725F68E1B0005C236 /* CoinPriceTouchBarController.swift */,
+				18A7184725FFCC63003F596A /* Main.storyboard */,
+				18A7184925FFCD6B003F596A /* TabViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		18A7184025FFCA74003F596A /* PreferencesViewController */ = {
+			isa = PBXGroup;
+			children = (
+				18A7184125FFCAC7003F596A /* PreferencesWindowController.swift */,
+				18A7184B25FFD34B003F596A /* CoinPairsViewController.swift */,
+			);
+			path = PreferencesViewController;
+			sourceTree = "<group>";
+		};
 		18A87BBC25F68DC10005C236 = {
 			isa = PBXGroup;
 			children = (
@@ -195,10 +232,11 @@
 				1888191A25F933D5001AE381 /* Extensions */,
 				18A87BD725F68E080005C236 /* Models */,
 				1888191925F933BE001AE381 /* TouchBar */,
+				18A7183B25FFCA0C003F596A /* ViewControllers */,
+				18D04A2F26066ADB00EA237B /* Views */,
 				18A87BC825F68DC10005C236 /* AppDelegate.swift */,
+				18D04A2D2606668C00EA237B /* Constants.swift */,
 				18A87BF025F68E1B0005C236 /* AppSettings.swift */,
-				18A87BF725F68E1B0005C236 /* CoinPriceTouchBarController.swift */,
-				18A87BF225F68E1B0005C236 /* defaultPreset.json */,
 				18A87BCA25F68DC20005C236 /* Assets.xcassets */,
 				18A87BCC25F68DC20005C236 /* MainMenu.xib */,
 				18A87BCF25F68DC20005C236 /* Info.plist */,
@@ -233,6 +271,16 @@
 				18A87BEA25F68E0D0005C236 /* TouchBarPrivateApi-Bridging.h */,
 			);
 			path = CBridge;
+			sourceTree = "<group>";
+		};
+		18D04A2F26066ADB00EA237B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				18D04A3026066AEC00EA237B /* CoinPairCellView.swift */,
+				18D04A3326066B1600EA237B /* AddCoinPairCellView.swift */,
+				18EEC7DA260BBBCB007C49F6 /* TextFieldDelegate.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		7D45EB61EF54BFCBF7ABB5DC /* Frameworks */ = {
@@ -305,9 +353,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18A87BF925F68E1B0005C236 /* defaultPreset.json in Resources */,
 				18A87BCB25F68DC20005C236 /* Assets.xcassets in Resources */,
 				18A87BCE25F68DC20005C236 /* MainMenu.xib in Resources */,
+				18A7184825FFCC63003F596A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,7 +414,12 @@
 				18A7182025FE187F003F596A /* Array+Extensions.swift in Sources */,
 				1888191325F8DC97001AE381 /* NibLoadable.swift in Sources */,
 				18A87BEB25F68E0D0005C236 /* LaunchAtLoginController.m in Sources */,
+				18A7184325FFCAC8003F596A /* PreferencesWindowController.swift in Sources */,
+				18D04A2E2606668C00EA237B /* Constants.swift in Sources */,
+				18EEC7DB260BBBCB007C49F6 /* TextFieldDelegate.swift in Sources */,
 				18A7180E25FCE25A003F596A /* Double+Extensions.swift in Sources */,
+				18D04A3426066B1600EA237B /* AddCoinPairCellView.swift in Sources */,
+				18A7184A25FFCD6B003F596A /* TabViewController.swift in Sources */,
 				18A87BFD25F68E1C0005C236 /* CoinPriceTouchBarController.swift in Sources */,
 				185C6C6225FA84430040CCD0 /* PairDetailController.swift in Sources */,
 				18A7180A25FC975F003F596A /* CoinPriceTouchBar.swift in Sources */,
@@ -377,9 +430,12 @@
 				185C6C6025FA7EC40040CCD0 /* PairsPriceController.swift in Sources */,
 				18A87BFC25F68E1C0005C236 /* UIColor+Extensions.swift in Sources */,
 				18A87BF825F68E1B0005C236 /* AppSettings.swift in Sources */,
+				18D04A362607C24700EA237B /* NSImage+Extensions.swift in Sources */,
 				18A7181E25FDE064003F596A /* ChartTouchBarItem.swift in Sources */,
 				18A87BC925F68DC10005C236 /* AppDelegate.swift in Sources */,
 				18A87BEE25F68E0D0005C236 /* DeprecatedCarbonAPI.c in Sources */,
+				18D04A3126066AEC00EA237B /* CoinPairCellView.swift in Sources */,
+				18A7184C25FFD34B003F596A /* CoinPairsViewController.swift in Sources */,
 				1888192E25F93E2D001AE381 /* PairsPriceTouchBarItem.swift in Sources */,
 				18A87BDC25F68E090005C236 /* BinanceCoinModel.swift in Sources */,
 			);
@@ -524,11 +580,13 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 2;
 				INFOPLIST_FILE = BinancePriceBar/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.phhai.BinancePriceBar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = BinancePriceBar/Header/BridgingHeader.h;
@@ -550,11 +608,13 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 2;
 				INFOPLIST_FILE = BinancePriceBar/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.phhai.BinancePriceBar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = BinancePriceBar/Header/BridgingHeader.h;

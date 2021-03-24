@@ -20,6 +20,17 @@ class CoinPriceTouchBar: NSTouchBar {
         }
     }
     
+    // MARK: - Constructors
+    init(coinPairs: [CoinPairModel]) {
+        super.init()
+        self.updateCoinPairs(coinPairs: coinPairs)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Public methods
     func updateCoinPairs(coinPairs: [CoinPairModel]) {
         self.pairsPriceController.updateCoinPairs(coinPairs: coinPairs)
         if case .coinPairs = self.touchBarType {

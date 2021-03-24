@@ -11,6 +11,7 @@ import ObjectMapper
 class PresetModel: Mappable {
     var coinPairs: [CoinPairModel] = []
     var chartInterval: ChartInterval = .h1
+    var fontSize: Int?
     required init?(map: Map) {
         
     }
@@ -26,42 +27,24 @@ class PresetModel: Mappable {
             return value?.rawValue
         })
         chartInterval   <- (map["chartInterval"], transform)
+        fontSize        <- map["fontSize"]
     }
 }
 
 extension PresetModel {
-    enum ChartInterval: String {
-        case m1, m5, m15, m30, h1, h2, h4, h6, h12, d1, d3, w1, M1
-        
-        func intervalValue() -> String {
-            switch self {
-            case .m1:
-                return "1m"
-            case .m5:
-                return "5m"
-            case .m15:
-                return "15m"
-            case .m30:
-                return "30m"
-            case .h1:
-                return "1h"
-            case .h2:
-                return "2h"
-            case .h4:
-                return "4h"
-            case .h6:
-                return "6h"
-            case .h12:
-                return "12h"
-            case .d1:
-                return "1d"
-            case .d3:
-                return "3d"
-            case .w1:
-                return "1w"
-            case .M1:
-                return "1M"
-            }
-        }
+    enum ChartInterval: String, CaseIterable {
+        case m1 = "1m"
+        case m5 = "5m"
+        case m15 = "15m"
+        case m30 = "30m"
+        case h1 = "1h"
+        case h2 = "2h"
+        case h4 = "4h"
+        case h6 = "6h"
+        case h12 = "12h"
+        case d1 = "1d"
+        case d3 = "3d"
+        case w1 = "1w"
+        case M1 = "1M"
     }
 }

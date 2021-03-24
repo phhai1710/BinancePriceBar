@@ -9,7 +9,6 @@ import Cocoa
 import ObjectMapper
 
 let appSupportDirectory = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first!.appending("/BinancePriceBar")
-let standardConfigPath = appSupportDirectory.appending("/items.json")
 
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -18,7 +17,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private let btcCharacter = "₿"
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
 
-    private let coinPriceTouchBarController = CoinPriceTouchBarController(coinPairs: [])
+    private let coinPriceTouchBarController = CoinPriceTouchBarController(coinPairs: AppSettings.coinPairs.filter({ $0.enable }))
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         DFRSystemModalShowsCloseBoxWhenFrontMost(true)
@@ -36,7 +35,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         AXIsProcessTrustedWithOptions([kAXTrustedCheckOptionPrompt.takeRetainedValue() as NSString: true] as NSDictionary)
         createMenu()
-        reloadStandardConfig()
     }
     
     @objc private func customTouchBarItemTapped() {
@@ -44,19 +42,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func reloadStandardConfig() {
-        let presetPath = standardConfigPath
-        if !FileManager.default.fileExists(atPath: presetPath),
-            let defaultPreset = Bundle.main.path(forResource: "defaultPreset", ofType: "json") {
-            try? FileManager.default.createDirectory(atPath: appSupportDirectory, withIntermediateDirectories: true, attributes: nil)
-            try? FileManager.default.copyItem(atPath: defaultPreset, toPath: presetPath)
-        }
-
-        if let data = try? Data(contentsOf:  URL(fileURLWithPath: presetPath), options: .mappedIfSafe),
-           let jsonString = String(data: data, encoding: .utf8),
-           let preset = PresetModel(JSONString: jsonString) {
-            coinPriceTouchBarController.reloadCoinPairs(coinPairs: preset.coinPairs)
-            AppSettings.chartInterval = preset.chartInterval
-        }
+        coinPriceTouchBarController.reloadCoinPairs(coinPairs: AppSettings.coinPairs.filter({ $0.enable }))
     }
     
     func createMenu() {
@@ -68,17 +54,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let showEsc = NSMenuItem(title: "Show Esc", action: #selector(toggleShowEsc), keyEquivalent: "E")
         showEsc.state = AppSettings.showEsc ? .on : .off
         
-        let settingSeparator = NSMenuItem(title: "Settings", action: nil, keyEquivalent: "")
-        settingSeparator.isEnabled = false
+        let checkForUpdate = NSMenuItem(title: "Check for Update...", action: nil, keyEquivalent: "U")
+        checkForUpdate.isEnabled = false
+        let supportCoffee = NSMenuItem(title: "Support the project ☕️", action: nil, keyEquivalent: "S")
+        supportCoffee.isEnabled = false
         
         menu.addItem(withTitle: "Preferences", action: #selector(openPreferences(_:)), keyEquivalent: ",")
-        menu.addItem(withTitle: "Open preset", action: #selector(openPreset(_:)), keyEquivalent: "O")
-        menu.addItem(withTitle: "Reload", action: #selector(reloadTouchBar), keyEquivalent: "R")
-
+        menu.addItem(withTitle: "Reload Touchbar", action: #selector(reloadTouchBar), keyEquivalent: "R")
         menu.addItem(NSMenuItem.separator())
-        menu.addItem(settingSeparator)
         menu.addItem(startAtLogin)
         menu.addItem(showEsc)
+        menu.addItem(NSMenuItem.separator())
+        menu.addItem(checkForUpdate)
+        menu.addItem(supportCoffee)
         menu.addItem(NSMenuItem.separator())
         menu.addItem(withTitle: "Quit", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
         statusItem.menu = menu
@@ -93,40 +81,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         createMenu()
     }
     @objc func reloadTouchBar() {
-        if let data = try? Data(contentsOf:  URL(fileURLWithPath: standardConfigPath), options: .mappedIfSafe),
-           let jsonString = String(data: data, encoding: .utf8),
-           let preset = PresetModel(JSONString: jsonString) {
-            coinPriceTouchBarController.reloadCoinPairs(coinPairs: preset.coinPairs)
-            AppSettings.chartInterval = preset.chartInterval
-        }
+        self.reloadStandardConfig()
     }
     @objc func openPreferences(_: Any?) {
-        let task = Process()
-        task.launchPath = "/usr/bin/open"
-        task.arguments = [standardConfigPath]
-        task.launch()
-    }
-    
-    @objc func openPreset(_: Any?) {
-        let dialog = NSOpenPanel()
-
-        dialog.title = "Choose a items.json file"
-        dialog.showsResizeIndicator = true
-        dialog.showsHiddenFiles = false
-        dialog.canChooseDirectories = false
-        dialog.canCreateDirectories = false
-        dialog.allowsMultipleSelection = false
-        dialog.allowedFileTypes = ["json"]
-        dialog.directoryURL = URL(fileURLWithPath: appSupportDirectory, isDirectory: true)
-
-        if dialog.runModal() == .OK, let path = dialog.url?.path {
-            if let data = path.data(using: .utf8),
-               let jsonString = String(data: data, encoding: .utf8),
-               let preset = PresetModel(JSONString: jsonString) {
-                coinPriceTouchBarController.reloadCoinPairs(coinPairs: preset.coinPairs)
-                AppSettings.chartInterval = preset.chartInterval
-            }
-        }
+        let wc = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "PreferencesWC")
+            as? PreferencesWindowController
+        wc?.showWindow(self)
     }
 
 }
