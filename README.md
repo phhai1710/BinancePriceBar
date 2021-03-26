@@ -2,7 +2,7 @@
 
 ![Touchbar](https://github.com/phhai1710/BinancePriceBar/blob/main/Resources/touchbar.gif?raw=true)
 
-Cyptocurrency prices on MacBook Touch Bar.
+Cyptocurrency prices on MacBook Touch Bar, <b>running real time</b>.
 
 The app runs in background and can be accessed anywhere by tapping the `₿` icon on the Touch Bar Control Strip.
 
@@ -28,9 +28,9 @@ The app runs in background and can be accessed anywhere by tapping the `₿` ico
 - [Mac](https://github.com/phhai1710/BinancePriceBar)
 
 ## :sparkling_heart: Support the project
-You want to support me, buy me a coffee, request new features, to access more people to explore the world of good coffee
+This is a hobby project which evolved over time, if you found this useful, or want to inspire development, request new features you can always donate me:
 
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/phhai1710) - Paypal me
+- Paypal me - [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/phhai1710)
 - USDT - TRC20 - THbh9LAsRG7NWEe7PVLE1FXo83MhJBfhR7
 - USDT - ERC20 - 0x54a3172e5305332d76ec8aabd8a773d286bd06a4
 - BTC - ERC20 - 0x54a3172e5305332d76ec8aabd8a773d286bd06a4
