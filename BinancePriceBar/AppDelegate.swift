@@ -56,8 +56,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         let checkForUpdate = NSMenuItem(title: "Check for Update...", action: nil, keyEquivalent: "U")
         checkForUpdate.isEnabled = false
-        let supportCoffee = NSMenuItem(title: "Support the project ☕️", action: nil, keyEquivalent: "S")
-        supportCoffee.isEnabled = false
+        let supportCoffee = NSMenuItem(title: "Support the project ☕️", action: #selector(donate), keyEquivalent: "S")
         
         menu.addItem(withTitle: "Preferences", action: #selector(openPreferences(_:)), keyEquivalent: ",")
         menu.addItem(withTitle: "Reload Touchbar", action: #selector(reloadTouchBar), keyEquivalent: "R")
@@ -89,5 +88,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         wc?.showWindow(self)
     }
 
+    @objc func donate() {
+        let url = URL(string: "https://github.com/phhai1710/BinancePriceBar#sparkling_heart-support-the-project")!
+        NSWorkspace.shared.open(url)
+    }
 }
 
