@@ -41,6 +41,7 @@
 		18D04A3126066AEC00EA237B /* CoinPairCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D04A3026066AEC00EA237B /* CoinPairCellView.swift */; };
 		18D04A3426066B1600EA237B /* AddCoinPairCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D04A3326066B1600EA237B /* AddCoinPairCellView.swift */; };
 		18D04A362607C24700EA237B /* NSImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D04A352607C24700EA237B /* NSImage+Extensions.swift */; };
+		18DC25792610C424005DA6D5 /* KLineChartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DC25782610C424005DA6D5 /* KLineChartModel.swift */; };
 		18EEC7DB260BBBCB007C49F6 /* TextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EEC7DA260BBBCB007C49F6 /* TextFieldDelegate.swift */; };
 		9E948525523F10D88BDE508A /* Pods_BinancePriceBar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92709B215F005F95C456B3FE /* Pods_BinancePriceBar.framework */; };
 /* End PBXBuildFile section */
@@ -106,6 +107,7 @@
 		18D04A3026066AEC00EA237B /* CoinPairCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinPairCellView.swift; sourceTree = "<group>"; };
 		18D04A3326066B1600EA237B /* AddCoinPairCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCoinPairCellView.swift; sourceTree = "<group>"; };
 		18D04A352607C24700EA237B /* NSImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+Extensions.swift"; sourceTree = "<group>"; };
+		18DC25782610C424005DA6D5 /* KLineChartModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KLineChartModel.swift; sourceTree = "<group>"; };
 		18EEC7DA260BBBCB007C49F6 /* TextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldDelegate.swift; sourceTree = "<group>"; };
 		92709B215F005F95C456B3FE /* Pods_BinancePriceBar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BinancePriceBar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B09B7FFF5E137CEAA20D497B /* Pods-BinancePriceBar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BinancePriceBar.release.xcconfig"; path = "Target Support Files/Pods-BinancePriceBar/Pods-BinancePriceBar.release.xcconfig"; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 				18A87BD825F68E080005C236 /* CoinPairModel.swift */,
 				18A87BD925F68E080005C236 /* BinanceCoinModel.swift */,
 				18A87BDA25F68E080005C236 /* PresetModel.swift */,
+				18DC25782610C424005DA6D5 /* KLineChartModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -410,6 +413,7 @@
 			files = (
 				18A7181225FD3300003F596A /* String+Extensions.swift in Sources */,
 				18A87BDD25F68E090005C236 /* PresetModel.swift in Sources */,
+				18DC25792610C424005DA6D5 /* KLineChartModel.swift in Sources */,
 				18A87BED25F68E0D0005C236 /* AMR_ANSIEscapeHelper.m in Sources */,
 				18A7182025FE187F003F596A /* Array+Extensions.swift in Sources */,
 				1888191325F8DC97001AE381 /* NibLoadable.swift in Sources */,
@@ -577,10 +581,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = BinancePriceBar/BinancePriceBar.entitlements;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = YG79B3A5KX;
 				INFOPLIST_FILE = BinancePriceBar/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -605,10 +610,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = BinancePriceBar/BinancePriceBar.entitlements;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = YG79B3A5KX;
 				INFOPLIST_FILE = BinancePriceBar/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

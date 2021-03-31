@@ -71,8 +71,9 @@ class PairDetailController: TouchBarItemController {
             case .success(let data):
                 if let data = data,
                    let chartData = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [[Any]] {
+                    let chartObjects = chartData.compactMap { KLineChartModel(object: $0) }
                     strongSelf.chartItem.setupChartDataSet(interval: AppSettings.chartInterval.rawValue,
-                                                           values: chartData)
+                                                           values: chartObjects)
                     strongSelf.scrollItem.updateItems(items: [strongSelf.pairItem, strongSelf.vol24hItem, strongSelf.chartItem])
                 }
                 
