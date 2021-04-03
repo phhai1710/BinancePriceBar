@@ -6,7 +6,7 @@ target 'BinancePriceBar' do
   use_frameworks!
 
   # Pods for CoinPriceBar
-  pod 'Starscream'
+  pod 'Starscream', '3.1.1'
   pod 'ObjectMapper'
   pod 'SnapKit'
   pod 'Kingfisher'
