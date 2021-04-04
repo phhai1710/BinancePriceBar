@@ -83,40 +83,60 @@ class ChartTouchBarItem: NSTouchBarItem {
     }
     
     // MARK: - Public methods
-    func setupChartDataSet(interval: String, values: [[Any]]) {
+    func setupChartDataSet(interval: String, values: [KLineChartModel]) {
         intervalLabel.stringValue = interval
         
-        let closePrices = values.compactMap({ $0.get(4) as? String })
-        let chartEntries = closePrices.enumerated().compactMap { index, value -> ChartDataEntry? in
-            if let double = Double(value) {
-                return ChartDataEntry(x: Double(index), y: double)
-            }
-            return nil
-        }
+        let chartEntries = self.chartDataEntries(datas: values)
         
-        let data = LineChartData()
-        let dataset = LineChartDataSet(entries: chartEntries)
-        
+        let priceDataSet = LineChartDataSet(entries: chartEntries.priceEntries)
         let gradientColors = [NSColor.cyan.cgColor, NSColor.green.cgColor] as CFArray // Colors of the gradient
         let colorLocations:[CGFloat] = [1.0, 0.0] // Positioning of the gradient
         let gradient = CGGradient.init(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: gradientColors, locations: colorLocations) // Gradient Object
         if let gradient = gradient {
-            dataset.fill = Fill.fillWithLinearGradient(gradient, angle: 90) // Set the Gradient
+            priceDataSet.fill = Fill.fillWithLinearGradient(gradient, angle: 90) // Set the Gradient
         } else {
-            dataset.fill = Fill.fillWithColor(NSColor.cyan)
+            priceDataSet.fill = Fill.fillWithColor(NSColor.cyan)
         }
-        dataset.drawFilledEnabled = true
+        priceDataSet.drawFilledEnabled = true
+        priceDataSet.drawCirclesEnabled = false
+        priceDataSet.drawValuesEnabled = false
+        priceDataSet.colors = [NSUIColor.yellow]
         
+        let rsiDataSet = LineChartDataSet(entries: chartEntries.rsiEntries)
+        rsiDataSet.drawFilledEnabled = true
+        rsiDataSet.drawCirclesEnabled = false
+        rsiDataSet.drawValuesEnabled = false
+        rsiDataSet.colors = [NSUIColor.red]
+        rsiDataSet.fill = Fill.fillWithColor(.clear)
         
-        dataset.drawCirclesEnabled = false
-        dataset.drawValuesEnabled = false
-        dataset.colors = [NSUIColor.yellow]
-        data.addDataSet(dataset)
+        let data = LineChartData()
+        data.addDataSet(priceDataSet)
+        data.addDataSet(rsiDataSet)
         
         lineChartView.data = data
     }
     
     // MARK: - Private methods
+    
+    private func chartDataEntries(datas: [KLineChartModel]) -> (priceEntries: [ChartDataEntry], rsiEntries: [ChartDataEntry]) {
+        let closePrices = datas.compactMap({ $0.closePrice })
+        var priceEntries = closePrices.enumerated().map { ChartDataEntry(x: Double($0), y: $1) }
+
+        var rsiDatas = RsiHelper.shared.getRsi(datas: datas, length: AppSettings.rsiLength)
+        let maxPrice = closePrices.max() ?? 0
+        let minPrice = closePrices.min() ?? 0
+        let maxRsi = rsiDatas.max() ?? 100
+        let minRsi = rsiDatas.min() ?? 0
+        rsiDatas = rsiDatas.map { $0/(maxRsi + minRsi) * (maxPrice - minPrice) + minPrice }
+        var rsiEntries = rsiDatas.enumerated().map({ ChartDataEntry(x: Double($0), y: $1) })
+        
+        // Because rsi need previous data for calculation, very first datas will has wrong value
+        priceEntries.removeFirst(AppSettings.rsiLength * 2)
+        rsiEntries.removeFirst(AppSettings.rsiLength * 2)
+
+        return (priceEntries, rsiEntries)
+    }
+    
     @objc private func didTapButton() {
         if let action = self.action {
             let object = target?.perform(action, with: self)

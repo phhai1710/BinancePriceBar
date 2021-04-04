@@ -8,8 +8,6 @@
 import Cocoa
 import ObjectMapper
 
-let appSupportDirectory = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first!.appending("/BinancePriceBar")
-
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
 

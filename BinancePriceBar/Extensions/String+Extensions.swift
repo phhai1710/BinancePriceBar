@@ -18,28 +18,16 @@ extension String {
     
     /// Converts String to Int
     func toInt() -> Int? {
-        if let num = NumberFormatter().number(from: self) {
-            return num.intValue
-        } else {
-            return nil
-        }
+        return Int(self)
     }
 
     /// Converts String to Double
     func toDouble() -> Double? {
-        if let num = NumberFormatter().number(from: self) {
-            return num.doubleValue
-        } else {
-            return nil
-        }
+        return Double(self)
     }
 
     /// Converts String to Float
     func toFloat() -> Float? {
-        if let num = NumberFormatter().number(from: self) {
-            return num.floatValue
-        } else {
-            return nil
-        }
+        return Float(self)
     }
 }

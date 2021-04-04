@@ -63,7 +63,7 @@ class PairDetailController: TouchBarItemController {
     // MARK: - Private methods
     
     private func getChartData() {
-        AF.request("https://api.binance.com/api/v3/klines?symbol=\(self.coinPair.pair)&interval=\(AppSettings.chartInterval.rawValue)&limit=100").response { [weak self] (response) in
+        AF.request("https://api.binance.com/api/v3/klines?symbol=\(self.coinPair.pair)&interval=\(AppSettings.chartInterval.rawValue)&limit=200").response { [weak self] (response) in
             guard let strongSelf = self else {
                 return
             }
@@ -71,8 +71,9 @@ class PairDetailController: TouchBarItemController {
             case .success(let data):
                 if let data = data,
                    let chartData = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [[Any]] {
+                    let chartObjects = chartData.compactMap { KLineChartModel(object: $0) }
                     strongSelf.chartItem.setupChartDataSet(interval: AppSettings.chartInterval.rawValue,
-                                                           values: chartData)
+                                                           values: chartObjects)
                     strongSelf.scrollItem.updateItems(items: [strongSelf.pairItem, strongSelf.vol24hItem, strongSelf.chartItem])
                 }
                 
