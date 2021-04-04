@@ -26,6 +26,9 @@ struct AppSettings {
         }
     }
     
+    @UserDefault(key: "rsiLength", defaultValue: 14)
+    static var rsiLength: Int
+    
     public static var coinPairs: [CoinPairModel] {
         get
         {
