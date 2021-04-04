@@ -86,128 +86,55 @@ class ChartTouchBarItem: NSTouchBarItem {
     func setupChartDataSet(interval: String, values: [KLineChartModel]) {
         intervalLabel.stringValue = interval
         
-        let closePrices = values.compactMap({ $0.closePrice })
-        let chartEntries = closePrices.enumerated().map { ChartDataEntry(x: Double($0), y: $1) }
+        let chartEntries = self.chartDataEntries(datas: values)
         
-        let data = LineChartData()
-        let dataset = LineChartDataSet(entries: chartEntries)
+        let priceDataSet = LineChartDataSet(entries: chartEntries.priceEntries)
         let gradientColors = [NSColor.cyan.cgColor, NSColor.green.cgColor] as CFArray // Colors of the gradient
         let colorLocations:[CGFloat] = [1.0, 0.0] // Positioning of the gradient
         let gradient = CGGradient.init(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: gradientColors, locations: colorLocations) // Gradient Object
         if let gradient = gradient {
-            dataset.fill = Fill.fillWithLinearGradient(gradient, angle: 90) // Set the Gradient
+            priceDataSet.fill = Fill.fillWithLinearGradient(gradient, angle: 90) // Set the Gradient
         } else {
-            dataset.fill = Fill.fillWithColor(NSColor.cyan)
+            priceDataSet.fill = Fill.fillWithColor(NSColor.cyan)
         }
-        dataset.drawFilledEnabled = true
-        dataset.drawCirclesEnabled = false
-        dataset.drawValuesEnabled = false
-        dataset.colors = [NSUIColor.yellow]
+        priceDataSet.drawFilledEnabled = true
+        priceDataSet.drawCirclesEnabled = false
+        priceDataSet.drawValuesEnabled = false
+        priceDataSet.colors = [NSUIColor.yellow]
         
-        var entries = self.getRsi(datas: values, length: 14)
-        let max = closePrices.max() ?? 0
-        let min = closePrices.min() ?? 0
-        let maxRsi = entries.max() ?? 100
-        let minRsi = entries.min() ?? 0
-//        entries = entries.map { min + (max - min)*($0 / 100) }
-        entries = entries.map { $0/(maxRsi + minRsi) * (max + min) }
-        let rsiDataset = LineChartDataSet(entries: entries.enumerated().map({ ChartDataEntry(x: Double($0), y: $1) }))
-        rsiDataset.drawFilledEnabled = true
-        rsiDataset.drawCirclesEnabled = false
-        rsiDataset.drawValuesEnabled = false
-        rsiDataset.colors = [NSUIColor.red]
-        rsiDataset.fill = Fill.fillWithColor(.clear)
+        let rsiDataSet = LineChartDataSet(entries: chartEntries.rsiEntries)
+        rsiDataSet.drawFilledEnabled = true
+        rsiDataSet.drawCirclesEnabled = false
+        rsiDataSet.drawValuesEnabled = false
+        rsiDataSet.colors = [NSUIColor.red]
+        rsiDataSet.fill = Fill.fillWithColor(.clear)
         
-        
-        data.addDataSet(dataset)
-        data.addDataSet(rsiDataset)
+        let data = LineChartData()
+        data.addDataSet(priceDataSet)
+        data.addDataSet(rsiDataSet)
         
         lineChartView.data = data
     }
     
     // MARK: - Private methods
-    private func calcSmmaUp(datas: [KLineChartModel], length n: Int, index i: Int, avgUt1: Double) -> Double {
-        if avgUt1 == 0 {
-            var sumUpChanges: Double = 0
-            
-            for j in 0..<n {
-                let change: Double = datas[i - j].closePrice - datas[i - j].openPrice
-                
-                if(change > 0){
-                    sumUpChanges += change
-                }
-            }
-            return sumUpChanges / Double(n)
-        } else {
-            var change = datas[i].closePrice - datas[i].openPrice
-            if change < 0 {
-                change = 0
-            }
-            return ((avgUt1 * Double(n-1)) + change) / Double(n)
-        }
-    }
+    
+    private func chartDataEntries(datas: [KLineChartModel]) -> (priceEntries: [ChartDataEntry], rsiEntries: [ChartDataEntry]) {
+        let closePrices = datas.compactMap({ $0.closePrice })
+        var priceEntries = closePrices.enumerated().map { ChartDataEntry(x: Double($0), y: $1) }
 
-    private func calcSmmaDown(datas: [KLineChartModel], length n: Int, index i: Int, avgDt1: Double) -> Double {
-        if avgDt1 == 0 {
-            var sumDownChanges: Double = 0
-            
-            for j in 0..<n {
-                let change: Double = datas[i - j].closePrice - datas[i - j].openPrice
-                
-                if change < 0 {
-                    sumDownChanges -= change
-                }
-            }
-            return sumDownChanges / Double(n);
-        }else {
-            var change: Double = datas[i].closePrice - datas[i].openPrice
-            if change > 0 {
-                change = 0
-            }
-            return ((avgDt1 * Double(n-1)) - change) / Double(n)
-        }
+        var rsiDatas = RsiHelper.shared.getRsi(datas: datas, length: AppSettings.rsiLength)
+        let maxPrice = closePrices.max() ?? 0
+        let minPrice = closePrices.min() ?? 0
+        let maxRsi = rsiDatas.max() ?? 100
+        let minRsi = rsiDatas.min() ?? 0
+        rsiDatas = rsiDatas.map { $0/(maxRsi + minRsi) * (maxPrice - minPrice) + minPrice }
+        var rsiEntries = rsiDatas.enumerated().map({ ChartDataEntry(x: Double($0), y: $1) })
         
-    }
-    
-    public func getRsi(datas: [KLineChartModel], length: Int) -> [Double] {
-        
-        var results = Array<Double>()
-        
-        var ut1: Double = 0
-        var dt1: Double = 0
-        datas.enumerated().forEach { (index, data) in
-            ut1 = index < length ? 1 : calcSmmaUp(datas: datas, length: length, index: index, avgUt1: ut1)
-            dt1 = index < length ? 1 : calcSmmaDown(datas: datas, length: length, index: index, avgDt1: dt1)
-            
-            let result = 100.0 - 100.0 / (1.0 + ut1/dt1)
-            results.append(result)
-        }
-        
-        return results;
-    }
-    
-    private func priceDataSet(chartEntries: [ChartDataEntry]) -> LineChartDataSet {
-        let dataset = LineChartDataSet(entries: chartEntries)
-        
-        let gradientColors = [NSColor.cyan.cgColor, NSColor.green.cgColor] as CFArray // Colors of the gradient
-        let colorLocations:[CGFloat] = [1.0, 0.0] // Positioning of the gradient
-        let gradient = CGGradient.init(colorsSpace: CGColorSpaceCreateDeviceRGB(),
-                                       colors: gradientColors, locations: colorLocations) // Gradient Object
-        if let gradient = gradient {
-            dataset.fill = Fill.fillWithLinearGradient(gradient, angle: 90) // Set the Gradient
-        } else {
-            dataset.fill = Fill.fillWithColor(NSColor.cyan)
-        }
-        dataset.drawFilledEnabled = true
-        dataset.drawCirclesEnabled = false
-        dataset.drawValuesEnabled = false
-        dataset.colors = [NSUIColor.yellow]
-        
-        return dataset
-    }
-    
-    private func rsiDataSet() {
-        
+        // Because rsi need previous data for calculation, very first datas will has wrong value
+        priceEntries.removeFirst(AppSettings.rsiLength * 2)
+        rsiEntries.removeFirst(AppSettings.rsiLength * 2)
+
+        return (priceEntries, rsiEntries)
     }
     
     @objc private func didTapButton() {
@@ -216,10 +143,4 @@ class ChartTouchBarItem: NSTouchBarItem {
             _ = object?.autorelease()
         }
     }
-}
-
-class RsiModel {
-    var lastSm: Double = 0
-    var lastSa: Double = 0
-    var rsi: [Double] = []
 }

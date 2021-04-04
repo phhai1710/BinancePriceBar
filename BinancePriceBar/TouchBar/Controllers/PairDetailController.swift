@@ -63,7 +63,7 @@ class PairDetailController: TouchBarItemController {
     // MARK: - Private methods
     
     private func getChartData() {
-        AF.request("https://api.binance.com/api/v3/klines?symbol=\(self.coinPair.pair)&interval=\(AppSettings.chartInterval.rawValue)&limit=100").response { [weak self] (response) in
+        AF.request("https://api.binance.com/api/v3/klines?symbol=\(self.coinPair.pair)&interval=\(AppSettings.chartInterval.rawValue)&limit=200").response { [weak self] (response) in
             guard let strongSelf = self else {
                 return
             }
