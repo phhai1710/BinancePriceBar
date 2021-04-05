@@ -164,6 +164,7 @@ extension CoinPairsViewController: NSTableViewDataSource, NSTableViewDelegate {
     func tableViewSelectionDidChange(_ notification: Notification) {
         // Save data of current row
         self.didTapSave()
+        // Fill data of new selected row
         let selectedRow = tableView.selectedRow
         if selectedRow == -1 {
             self.currentSelectedRow = nil
@@ -236,19 +237,44 @@ extension CoinPairsViewController {
                 return
             }
             
-            coinPair.enable = enableButton.state == .on ? true : false
-            coinPair.pair = pairTextField.stringValue
-            coinPair.name = nameTextField.stringValue
-            coinPair.iconUrl = iconUrlTextField.stringValue
-            coinPair.iconBase64String = self.selectedIconBase64String
-            coinPair.colorHex = colorPicker.color.hexString()
-            coinPair.aboveAlertPrice = aboveAlertTextField.stringValue.trimmed().toDouble()
-            coinPair.belowAlertPrice = belowAlertTextField.stringValue.trimmed().toDouble()
-            if let fontSize = fontSizeButton.titleOfSelectedItem?.toInt() {
-                coinPair.fontSize = fontSize
+            let enable = enableButton.state == .on ? true : false
+            let pair = pairTextField.stringValue
+            let name = nameTextField.stringValue
+            let iconUrl = iconUrlTextField.stringValue
+            let iconBase64String = self.selectedIconBase64String
+            let colorHex = colorPicker.color.hexString()
+            let aboveAlertPrice = aboveAlertTextField.stringValue.trimmed().toDouble()
+            let belowAlertPrice = belowAlertTextField.stringValue.trimmed().toDouble()
+            let fontSize = fontSizeButton.titleOfSelectedItem?.toInt() ?? 14
+            
+            var hasChanged = false
+            if coinPair.enable != enable
+                || coinPair.pair != pair
+                || coinPair.name != name
+                || coinPair.iconUrl != iconUrl
+                || coinPair.iconBase64String != iconBase64String
+                || coinPair.colorHex != colorHex
+                || coinPair.aboveAlertPrice != aboveAlertPrice
+                || coinPair.belowAlertPrice != belowAlertPrice
+                || coinPair.fontSize != fontSize {
+                hasChanged = true
             }
+            
+            coinPair.enable = enable
+            coinPair.pair = pair
+            coinPair.name = name
+            coinPair.iconUrl = iconUrl
+            coinPair.iconBase64String = iconBase64String
+            coinPair.colorHex = colorHex
+            coinPair.aboveAlertPrice = aboveAlertPrice
+            coinPair.belowAlertPrice = belowAlertPrice
+            coinPair.fontSize = fontSize
+            
             AppSettings.coinPairs = self.coinPairs
             self.tableView.reloadData(forRowIndexes: IndexSet(integer: currentSelectedRow), columnIndexes: IndexSet(integer: 0))
+            if hasChanged {
+                (NSApplication.shared.delegate as? AppDelegate)?.reloadTouchBar()
+            }
         }
     }
     
@@ -275,6 +301,7 @@ extension CoinPairsViewController {
                     if let currentSelectedRow = self.currentSelectedRow,
                        self.coinPairs.count > currentSelectedRow {
                         self.coinPairs.remove(at: currentSelectedRow)
+                        self.currentSelectedRow = nil
                         AppSettings.coinPairs = self.coinPairs
                         self.tableView.reloadData()
                         self.fillData(for: nil)
