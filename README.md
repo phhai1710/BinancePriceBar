@@ -25,7 +25,7 @@ The app runs in background and can be accessed anywhere by tapping the `₿` ico
 
 ## Download
 
-- [Mac](https://github.com/phhai1710/BinancePriceBar)
+- [Mac](https://github.com/phhai1710/BinancePriceBar/raw/master/Builds/BinancePriceBar.zip)
 
 ## :sparkling_heart: Support the project
 This is a hobby project which evolved over time, if you found this useful, or want to inspire development, request new features you can always donate me:
