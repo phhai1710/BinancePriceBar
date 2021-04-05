@@ -15,8 +15,8 @@ The app runs in background and can be accessed anywhere by tapping the `₿` ico
 - [x] Change chart interval.
 - [x] Start at login.
 - [x] Show Esc.
+- [x] RSI 14 indicator.
 - [ ] Show Binance account's data.
-- [ ] RSI indicator.
 - [ ] ...
 
 ## Preferences
