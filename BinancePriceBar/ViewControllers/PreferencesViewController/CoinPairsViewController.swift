@@ -9,6 +9,7 @@ import Foundation
 import Kingfisher
 
 class CoinPairsViewController: NSViewController {
+    private static let coinPairPasteBoard = NSPasteboard.PasteboardType("preferences.coinpair")
     
     @IBOutlet weak var tableView: NSTableView! {
         didSet {
@@ -16,6 +17,7 @@ class CoinPairsViewController: NSViewController {
             tableView.dataSource = self
             tableView.columnAutoresizingStyle = .uniformColumnAutoresizingStyle
             tableView.sizeLastColumnToFit()
+            tableView.registerForDraggedTypes([CoinPairsViewController.coinPairPasteBoard])
         }
     }
     @IBOutlet weak var enableButton: NSButton!
@@ -175,6 +177,50 @@ extension CoinPairsViewController: NSTableViewDataSource, NSTableViewDelegate {
         }
     }
     
+    // Handle reorder
+    func tableView(_ tableView: NSTableView, writeRowsWith rowIndexes: IndexSet, to pboard: NSPasteboard) -> Bool {
+        if let rowData = try? NSKeyedArchiver.archivedData(withRootObject: rowIndexes, requiringSecureCoding: false) {
+            pboard.declareTypes([CoinPairsViewController.coinPairPasteBoard], owner: self)
+            pboard.setData(rowData, forType: CoinPairsViewController.coinPairPasteBoard)
+            return true
+        } else {
+            return false
+        }
+        
+    }
+    
+    func tableView(_ tableView: NSTableView, validateDrop info: NSDraggingInfo, proposedRow row: Int, proposedDropOperation dropOperation: NSTableView.DropOperation) -> NSDragOperation {
+        return .every
+    }
+    
+    func tableView(_ tableView: NSTableView, acceptDrop info: NSDraggingInfo, row: Int, dropOperation: NSTableView.DropOperation) -> Bool {
+        let pboard = info.draggingPasteboard
+        if let rowData = pboard.data(forType: CoinPairsViewController.coinPairPasteBoard),
+           let rowIndexes = try? NSKeyedUnarchiver.unarchivedObject(ofClass: NSIndexSet.self, from: rowData) {
+            let dragRow = rowIndexes.firstIndex
+            
+            if dragRow < row {
+                self.coinPairs.insert(self.coinPairs[dragRow], at: row)
+                self.coinPairs.remove(at: dragRow)
+                
+                tableView.noteNumberOfRowsChanged()
+                tableView.moveRow(at: dragRow, to: row - 1)
+            } else {
+                let temp = self.coinPairs[dragRow]
+                self.coinPairs.remove(at: dragRow)
+                self.coinPairs.insert(temp, at: row)
+
+                tableView.noteNumberOfRowsChanged()
+                tableView.moveRow(at: dragRow, to: row)
+            }
+            AppSettings.coinPairs = self.coinPairs
+            (NSApplication.shared.delegate as? AppDelegate)?.reloadTouchBar()
+            return true
+        } else {
+            return false
+        }
+        
+    }
 }
 
 // MARK: - AddCoinPairCellViewDelegate
@@ -305,6 +351,8 @@ extension CoinPairsViewController {
                         AppSettings.coinPairs = self.coinPairs
                         self.tableView.reloadData()
                         self.fillData(for: nil)
+                                                
+                        (NSApplication.shared.delegate as? AppDelegate)?.reloadTouchBar()
                     }
                 }
             }
