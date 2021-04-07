@@ -1,6 +1,6 @@
 # BinancePriceBar
 
-![Touchbar](https://github.com/phhai1710/BinancePriceBar/blob/main/Resources/touchbar.gif?raw=true)
+![Touchbar](https://github.com/phhai1710/BinancePriceBar/blob/master/Resources/touchbar.gif?raw=true)
 
 Cryptocurrency prices on MacBook Touch Bar, <b>running real time</b>.
 
@@ -22,7 +22,7 @@ The app runs in background and can be accessed anywhere by tapping the `₿` ico
 
 ## Preferences
 
-<img src="https://github.com/phhai1710/BinancePriceBar/blob/main/Resources/Preferences.png" alt="Preferences" width="500" height="500"/>
+<img src="https://github.com/phhai1710/BinancePriceBar/blob/master/Resources/Preferences.png" alt="Preferences" width="500" height="500"/>
 
 ## Download
 
