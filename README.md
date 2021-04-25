@@ -4,8 +4,8 @@
 
 Cryptocurrency prices on MacBook Touch Bar, <b>running real time</b>.
 
-<img src="https://github.com/phhai1710/BinancePriceBar/blob/master/Resources/control_strip_icon.png?raw=true" alt="Preferences" width="244" height="41"/>
 The app runs in background and can be accessed anywhere by tapping the `₿` icon on the Touch Bar Control Strip.
+<img src="https://github.com/phhai1710/BinancePriceBar/blob/master/Resources/control_strip_icon.png?raw=true" alt="Preferences" width="244" height="41"/>
 
 ## Features
 
@@ -23,12 +23,11 @@ The app runs in background and can be accessed anywhere by tapping the `₿` ico
 
 ## Preferences
 
-![MenuBarIcon](https://github.com/phhai1710/BinancePriceBar/blob/master/Resources/icon_menu_bar.png?raw=true)
 To update coin pairs, tap into the B icon on menu bar, select Preferences.
-
-<img src="https://github.com/phhai1710/BinancePriceBar/blob/master/Resources/Preferences.png" alt="Preferences" width="500" height="500"/>
+![MenuBarIcon](https://github.com/phhai1710/BinancePriceBar/blob/master/Resources/icon_menu_bar.png?raw=true)
 
 Tap into icon ` + ` to add new coin pair, enter the name and then tap Save to reload the touchbar.
+<img src="https://github.com/phhai1710/BinancePriceBar/blob/master/Resources/Preferences.png" alt="Preferences" width="500" height="500"/>
 
 ## Download
 
