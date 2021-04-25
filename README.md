@@ -4,6 +4,7 @@
 
 Cryptocurrency prices on MacBook Touch Bar, <b>running real time</b>.
 
+![ControlStripIcon](https://github.com/phhai1710/BinancePriceBar/blob/master/Resources/control_strip_icon.png?raw=true)
 The app runs in background and can be accessed anywhere by tapping the `₿` icon on the Touch Bar Control Strip.
 
 ## Features
