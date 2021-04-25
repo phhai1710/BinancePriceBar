@@ -21,10 +21,11 @@ The app runs in background and can be accessed anywhere by tapping the `₿` ico
 - [ ] ...
 
 ## Preferences
-![Menu bar icon](https://github.com/phhai1710/BinancePriceBar/blob/main/Resources/icon_menu_bar.png?raw=true)
-To update coin pairs, tap into the B icon on menu bar, select Preferences
-<img src="https://github.com/phhai1710/BinancePriceBar/blob/main/Resources/Preferences.png" alt="Preferences" width="500" height="500"/>
-Tap into + icon to enter new coin pair, then tap Save to reload the touchbar.
+![MenuBarIcon](https://github.com/phhai1710/BinancePriceBar/blob/master/Resources/icon_menu_bar.png?raw=true)
+To update coin pairs, tap into the B icon on menu bar, select Preferences.
+
+<img src="https://github.com/phhai1710/BinancePriceBar/blob/master/Resources/Preferences.png" alt="Preferences" width="500" height="500"/>
+Tap into ` + ` icon to enter new coin pair, then tap Save to reload the touchbar.
 
 ## Download
 
