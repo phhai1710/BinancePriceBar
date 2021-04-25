@@ -27,7 +27,7 @@ To update coin pairs, tap into the B icon on menu bar, select Preferences.
 
 <img src="https://github.com/phhai1710/BinancePriceBar/blob/master/Resources/Preferences.png" alt="Preferences" width="500" height="500"/>
 
-Tap into ` + ` icon to enter new coin pair, then tap Save to reload the touchbar.
+Tap into icon ` + ` to add new coin pair, enter the name and then tap Save to reload the touchbar.
 
 ## Download
 
